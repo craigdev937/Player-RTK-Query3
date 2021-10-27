@@ -4,8 +4,11 @@ import helmet from "helmet";
 import logger from "morgan";
 import { trim } from "./middleware/trim";
 import { playerRt } from "./routes/playerRt";
+import { createConnection } from "typeorm";
 
 (async () => {
+    await createConnection();
+    console.log("PostgreSQL is now Connected!");
     const app: express.Application = express();
     app.use(helmet());
 
