@@ -1,12 +1,14 @@
 import React from "react";
 import { useHistory } from "react-router-dom";
 import { PlayerAPI } from "../global/PlayerAPI";
-import { IPlayer } from "../models/IPlayer";
 
 export const Add = (): JSX.Element => {
     const history = useHistory();
-    const [player, setPlayer] = React.useState({} as IPlayer);
     const [addPlayer] = PlayerAPI.useAddPlayerMutation();
+    const [player, setPlayer] = React.useState({
+        firstName: "", lastName: "", age: 0, 
+        codename: "", info: ""
+    });    
 
     const handleChange = 
     (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -19,7 +21,10 @@ export const Add = (): JSX.Element => {
         event.preventDefault();
         await addPlayer(player);
         // After submitting
-        setPlayer({} as IPlayer);
+        setPlayer({
+            firstName: "", lastName: "", age: 0, 
+            codename: "", info: ""
+        });
         history.push("/");
     };
 

@@ -1,11 +1,11 @@
 export interface IPlayer {
-    id: number,
+    id?: number,
     firstName: string,
     lastName: string,
     age: number,
     codename: string,
     info: string,
-    player: IPlayer,
+    player?: IPlayer,
 };
 
 //  player: IPlayer,
