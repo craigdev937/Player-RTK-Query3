@@ -28,7 +28,8 @@ export const PlayerAPI = createApi({
                     method: "POST",
                     body: player,
                 }
-            }
+            },
+            invalidatesTags: [{ type: "Players", id: "LIST" }],
         }),
         updatePlayer: builder.mutation<IPlayer, IPlayer>({
             query: ({ id, ...player }) => ({

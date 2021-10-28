@@ -51,7 +51,7 @@ export const Add = (): JSX.Element => {
                 </aside>
                 <aside>
                     <input 
-                        type="text"
+                        type="number"
                         name="age"
                         placeholder="Age"
                         value={player.age}
