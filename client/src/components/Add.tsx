@@ -4,7 +4,7 @@ import { PlayerAPI } from "../global/PlayerAPI";
 
 export const Add = (): JSX.Element => {
     const history = useHistory();
-    const [addPlayer] = PlayerAPI.useAddPlayerMutation();
+    const [addPlayer] = PlayerAPI.useAddMutation();
     const [player, setPlayer] = React.useState({
         id: 0, firstName: "", lastName: "", age: 0, 
         codename: "", info: ""

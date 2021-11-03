@@ -1,14 +1,24 @@
 import React from "react";
-import { Link, useHistory } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 import { PlayerAPI } from "../global/PlayerAPI";
 
-export const Edit = (): JSX.Element => {
+export const Edit = ({match}: any): JSX.Element => {
     const history = useHistory();
-    const [updatePlayer] = PlayerAPI.useUpdatePlayerMutation();
+    const playerID = match.params.id;
     const [player, setPlayer] = React.useState({
         id: 0, firstName: "", lastName: "", age: 0, 
         codename: "", info: ""
     });
+
+    const [updatePlayer] = PlayerAPI.useUpdateMutation();
+    const { data: playerData, isSuccess: playerDataReady } = 
+        PlayerAPI.useGetOneQuery(playerID);
+
+    React.useEffect(() => {
+        if (playerDataReady) {
+            setPlayer(playerData!);
+        }
+    }, [playerData, playerDataReady]);
 
     const handleChange = 
     (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -19,6 +29,7 @@ export const Edit = (): JSX.Element => {
     const handleSubmit =  
     async (event: React.FormEvent<HTMLFormElement>) => {
         event.preventDefault();
+        // editPlayer(player)
         await updatePlayer(player);
         setPlayer({
             id: 0, firstName: "", lastName: "", age: 0, 

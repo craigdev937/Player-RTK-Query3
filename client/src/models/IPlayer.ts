@@ -8,10 +8,8 @@ export interface IPlayer {
     player?: IPlayer,
 };
 
-export interface TPlayer {
-    player: IPlayer,
-    players: IPlayer[]
-};
+// player: IPlayer,
+// players: IPlayer[],
 
 
 

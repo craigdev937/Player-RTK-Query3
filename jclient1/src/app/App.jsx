@@ -1,11 +1,15 @@
 import React from "react";
 import "./App.css";
 import { Routes } from "../pages/Routes";
+import { Provider } from "react-redux";
+import { RootReducer } from "../global/RootReducer";
 
 export const App = () => {
     return (
         <React.Fragment>
-            <Routes />
+            <Provider store={RootReducer}>
+                <Routes />
+            </Provider>
         </React.Fragment>
     );
 };

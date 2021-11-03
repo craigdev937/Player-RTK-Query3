@@ -1,10 +1,20 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
-export const Item = () => {
+export const Item = ({ player }) => {
     return (
         <React.Fragment>
-            <h1>Item</h1>
-            <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Incidunt quas dolores, temporibus quibusdam, inventore, nobis autem facere nemo reiciendis blanditiis dolorum! Architecto id, vitae odio dignissimos minima odit neque obcaecati!</p>
+            <article>
+                <h2>
+                    <Link 
+                        to={`/players/edit/${player.id}`}
+                        >{player.codename}
+                    </Link>
+                </h2>
+                <p>{player.firstName} {player.lastName}</p>
+                <p>{player.age}</p>
+                <p>{player.info}</p>
+            </article>
         </React.Fragment>
     );
 };

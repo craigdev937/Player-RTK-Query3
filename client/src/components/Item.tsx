@@ -2,15 +2,19 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { IPlayer } from "../models/IPlayer";
 
-type Player = {
+type TPlayer = {
     player: IPlayer,
 };
 
-export const Item = ({ player }: Player): JSX.Element => {
+export const Item = ({ player }: TPlayer): JSX.Element => {
     return (
         <React.Fragment>
-            <Link to={`/players/edit/${player.id}`}>{player.firstName}</Link>
-            <h1>Item</h1>
+            <h2>
+                <Link 
+                    to={`/players/edit/${player.id}`}
+                    >{player.codename}
+                </Link>
+            </h2>
             <main key={player.id}>
                 <h3>{player.firstName} {player.lastName}</h3>
                 <p>Age: {player.age}, Codename: {player.codename}</p>
