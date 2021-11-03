@@ -10,6 +10,7 @@ export const PlayerAPI = createApi({
     endpoints: (builder) => ({
         fetchAllPlayers: builder.query<IPlayer[], void>({
             query: () => "players",
+            // providesTags: ["Players"],
             providesTags: (result) => result ?
             [...result.map(({ id }) => 
                 ({ type: "Players" as const, id })),
@@ -18,8 +19,8 @@ export const PlayerAPI = createApi({
         }),
         getOnePlayer: builder.query<IPlayer, number>({
             query: (id) => `players/${id}`,
-            providesTags: (result, error, id) => 
-                [{ type: "Players", id }],
+            // providesTags: (result, error, arg) => ["Players"],
+            providesTags: ["Players"],
         }),
         addPlayer: builder.mutation<IPlayer, IPlayer>({
             query: (player) => {
@@ -37,7 +38,8 @@ export const PlayerAPI = createApi({
                 method: "PUT",
                 body: player
             }),
-            invalidatesTags: ["Players"],
+            // invalidatesTags: ["Players"],
+            invalidatesTags: [{ type: "Players", id: "LIST" }],
         }),
         deletePlayer: builder.mutation<IPlayer, number>({
             query: (id) => ({

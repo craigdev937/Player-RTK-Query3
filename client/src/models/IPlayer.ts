@@ -1,15 +1,19 @@
 export interface IPlayer {
-    id?: number,
+    id: number,
     firstName: string,
     lastName: string,
     age: number,
     codename: string,
-    info: string,
+    info: string
     player?: IPlayer,
 };
 
-//  player: IPlayer,
-//  players: IPlayer[],
+export interface TPlayer {
+    player: IPlayer,
+    players: IPlayer[]
+};
+
+
 
 
 

@@ -1,24 +1,28 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import { Item } from "./Item";
 import { PlayerAPI } from "../global/PlayerAPI";
 
 export const List = (): JSX.Element => {
-    const { data: players } = 
-        PlayerAPI.useFetchAllPlayersQuery();
+    const { data } = PlayerAPI.useFetchAllPlayersQuery();
 
     return (
         <React.Fragment>
             <header className="post-header">
                 <Link to="/players/add/">Add Player</Link>
             </header>
-            {players?.map((player) => (
-                <main key={player.id}>
-                    <h3>{player.firstName} {player.lastName}</h3>
-                    <p>Age: {player.age}, Codename: {player.codename}</p>
-                    <p>{player.info}</p>
-                </main>
+            {data?.map((player) => (
+                <Item 
+                    key={player.id}
+                    id={player.id}
+                    firstName={player.firstName}
+                    lastName={player.lastName}
+                    age={player.age}
+                    codename={player.codename}
+                    info={player.info}
+                />
             ))}
-            {players?.length === 0 && <aside>Add a Player</aside>}
+            {data?.length === 0 && <aside>Add a Player</aside>}
         </React.Fragment>
     );
 };

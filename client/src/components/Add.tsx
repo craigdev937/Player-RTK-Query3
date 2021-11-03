@@ -6,7 +6,7 @@ export const Add = (): JSX.Element => {
     const history = useHistory();
     const [addPlayer] = PlayerAPI.useAddPlayerMutation();
     const [player, setPlayer] = React.useState({
-        firstName: "", lastName: "", age: 0, 
+        id: 0, firstName: "", lastName: "", age: 0, 
         codename: "", info: ""
     });    
 
@@ -22,7 +22,7 @@ export const Add = (): JSX.Element => {
         await addPlayer(player);
         // After submitting
         setPlayer({
-            firstName: "", lastName: "", age: 0, 
+            id: 0, firstName: "", lastName: "", age: 0, 
             codename: "", info: ""
         });
         history.push("/");
