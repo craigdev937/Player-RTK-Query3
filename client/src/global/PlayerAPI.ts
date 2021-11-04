@@ -33,7 +33,7 @@ export const PlayerAPI = createApi({
         }),
         updatePlayer: builder.mutation<IPlayer, IPlayer>({
             query: ({ id, ...player }) => ({
-                url: `${id}`,
+                url: `players${id}`,
                 method: "PUT",
                 body: player
             }),
@@ -41,7 +41,7 @@ export const PlayerAPI = createApi({
         }),
         deletePlayer: builder.mutation<IPlayer, number>({
             query: (id) => ({
-                url: `${id}`,
+                url: `players${id}`,
                 method: "DELETE",
             }),
             invalidatesTags: ["Players"],
