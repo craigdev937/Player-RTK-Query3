@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import { useHistory } from "react-router-dom";
 import { PlayerAPI } from "../global/PlayerAPI";
 
@@ -8,7 +9,7 @@ export const Add = (): JSX.Element => {
     const [player, setPlayer] = React.useState({
         id: 0, firstName: "", lastName: "", age: 0, 
         codename: "", info: ""
-    });    
+    });
 
     const handleChange = 
     (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -76,6 +77,7 @@ export const Add = (): JSX.Element => {
                         onChange={handleChange}
                     />
                 </aside>
+                <button><Link to="/">Cancel</Link></button>
                 <button type="submit">Add Player</button>
             </form>
         </React.Fragment>
