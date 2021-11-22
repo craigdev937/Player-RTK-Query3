@@ -1,6 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { PlayerAPI } from "../global/PlayerAPI";
+import { Item } from "./Item";
 
 export const List = (): JSX.Element => {
     const { data: players } = 
@@ -12,11 +13,10 @@ export const List = (): JSX.Element => {
                 <Link to="/players/add/">Add Player</Link>
             </header>
             {players?.map((player) => (
-                <main key={player.id}>
-                    <h3>{player.firstName} {player.lastName}</h3>
-                    <p>Age: {player.age}, Codename: {player.codename}</p>
-                    <p>{player.info}</p>
-                </main>
+                <Item 
+                    key={player.id}
+                    player={player}
+                />
             ))}
             {players?.length === 0 && <aside>Add a Player</aside>}
         </React.Fragment>

@@ -3,7 +3,7 @@ import { BaseEntity, Column, Entity,
 
 @Entity({name: "players"})
 export class Players extends BaseEntity {
-    @PrimaryGeneratedColumn() id: number;
+    @PrimaryGeneratedColumn("uuid") id:string;
     @Column() firstName: string;
     @Column() lastName: string;
     @Column() age: number;
