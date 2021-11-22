@@ -1,12 +1,12 @@
 import React from "react";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { PlayerAPI } from "../global/PlayerAPI";
 
 export const Add = (): JSX.Element => {
     const navigate = useNavigate();
     const [addPlayer] = PlayerAPI.useAddPlayerMutation();
     const [player, setPlayer] = React.useState({
-        firstName: "", lastName: "", age: 0, 
+        id: "", firstName: "", lastName: "", age: 0, 
         codename: "", info: ""
     });    
 
@@ -22,7 +22,7 @@ export const Add = (): JSX.Element => {
         await addPlayer(player);
         // After submitting
         setPlayer({
-            firstName: "", lastName: "", age: 0, 
+            id: "", firstName: "", lastName: "", age: 0, 
             codename: "", info: ""
         });
         navigate("/");
@@ -76,6 +76,7 @@ export const Add = (): JSX.Element => {
                         onChange={handleChange}
                     />
                 </aside>
+                <button><Link to="/">Cancel</Link></button>
                 <button type="submit">Add Player</button>
             </form>
         </React.Fragment>

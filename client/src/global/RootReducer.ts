@@ -6,9 +6,8 @@ export const RootReducer = configureStore({
     reducer: {
         [PlayerAPI.reducerPath]: PlayerAPI.reducer,
     },
-    middleware: (getDefaultMiddlware) => 
-        getDefaultMiddlware()
-        .concat(PlayerAPI.middleware),
+    // gDM = getDefaultMiddleware
+    middleware: (gDM) => gDM().concat(PlayerAPI.middleware),
 });
 
 setupListeners(RootReducer.dispatch);
