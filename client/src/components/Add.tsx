@@ -1,9 +1,9 @@
 import React from "react";
-import { useHistory } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { PlayerAPI } from "../global/PlayerAPI";
 
 export const Add = (): JSX.Element => {
-    const history = useHistory();
+    const navigate = useNavigate();
     const [addPlayer] = PlayerAPI.useAddPlayerMutation();
     const [player, setPlayer] = React.useState({
         firstName: "", lastName: "", age: 0, 
@@ -25,7 +25,7 @@ export const Add = (): JSX.Element => {
             firstName: "", lastName: "", age: 0, 
             codename: "", info: ""
         });
-        history.push("/");
+        navigate("/");
     };
 
     return (
